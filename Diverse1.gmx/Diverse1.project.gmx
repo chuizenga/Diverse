@@ -24,6 +24,11 @@
     </sprites>
     <sprites name="testEnemies">
       <sprite>sprites\testSlime</sprite>
+      <sprite>sprites\testSlimeBite</sprite>
+      <sprite>sprites\testSlimeRedBite</sprite>
+      <sprite>sprites\testSlimeRed</sprite>
+      <sprite>sprites\testSlimeYellow</sprite>
+      <sprite>sprites\testSlimeYellowBite</sprite>
       <sprite>sprites\testCombatState</sprite>
     </sprites>
   </sprites>
