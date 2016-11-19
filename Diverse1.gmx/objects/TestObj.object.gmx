@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="5" enumb="38">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,7 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y = y-1;
+            <string>if(keyboard_check(vk_left)==true){
+    self.x-=5;
+}
+if(keyboard_check(vk_down)==true){
+    self.y+=5;
+}
+if(keyboard_check(vk_right)==true){
+    self.x+=5;
+}
+if(keyboard_check(vk_up)==true){
+    self.y-=5;
+}
 </string>
           </argument>
         </arguments>
