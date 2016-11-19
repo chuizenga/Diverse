@@ -31,8 +31,13 @@
       <sprite>sprites\testSlimeYellowBite</sprite>
       <sprite>sprites\testCombatState</sprite>
     </sprites>
+    <sprites name="testEnvironment">
+      <sprite>sprites\testGrass</sprite>
+    </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\testISO</background>
+  </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\TestObj</object>
@@ -40,6 +45,8 @@
     <object>objects\objMouseMove</object>
     <object>objects\objSlime</object>
     <object>objects\objController</object>
+    <object>objects\objTestGrass</object>
+    <object>objects\obj_testEnvironment</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
