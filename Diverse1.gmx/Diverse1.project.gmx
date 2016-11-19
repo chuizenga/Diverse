@@ -38,6 +38,8 @@
     <object>objects\TestObj</object>
     <object>objects\objPlayer</object>
     <object>objects\objMouseMove</object>
+    <object>objects\objSlime</object>
+    <object>objects\objController</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
