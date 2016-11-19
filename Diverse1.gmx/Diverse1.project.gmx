@@ -20,6 +20,7 @@
       <sprite>sprites\testMoveUp</sprite>
       <sprite>sprites\testMoveRight</sprite>
       <sprite>sprites\testMoveLeft</sprite>
+      <sprite>sprites\testCursor</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
