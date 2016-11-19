@@ -24,6 +24,7 @@
     </sprites>
     <sprites name="testEnemies">
       <sprite>sprites\testSlime</sprite>
+      <sprite>sprites\testCombatState</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
