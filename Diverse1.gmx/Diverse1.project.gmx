@@ -30,6 +30,8 @@
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\TestObj</object>
+    <object>objects\objPlayer</object>
+    <object>objects\objMouseMove</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
