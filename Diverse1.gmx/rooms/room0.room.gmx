@@ -55,7 +55,6 @@
     <instance objName="objPlayer" x="288" y="160" name="inst_8BA5DF08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSlime" x="416" y="288" name="inst_6CC593A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objController" x="64" y="160" name="inst_C6CFA83C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_testEnvironment" x="0" y="0" name="inst_5910FAFC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
