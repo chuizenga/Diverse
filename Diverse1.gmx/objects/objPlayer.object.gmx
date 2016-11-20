@@ -168,7 +168,7 @@ if (objController.click_id = self){
     draw_set_color(c_white);
     }
 else if (objController.click_id != self) {
-    draw_set_color(c_black);
+    draw_set_color(c_teal);
     }
 draw_text(self.x,self.y-32,strName);
 
