@@ -34,6 +34,9 @@
     <sprites name="testEnvironment">
       <sprite>sprites\testGrass</sprite>
     </sprites>
+    <sprite>sprites\sprite20</sprite>
+    <sprite>sprites\sprite21</sprite>
+    <sprite>sprites\sprite22</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\testISO</background>
