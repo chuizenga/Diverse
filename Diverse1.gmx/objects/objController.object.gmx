@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>target="";
 click_id = 0;
+target_x=0;
+target_y=0;
 </string>
           </argument>
         </arguments>
@@ -97,7 +99,7 @@ draw_set_color(c_black);
 draw_text(0,0,string(target));
 draw_text(0,20,string(click_id));
 
-draw_sprite(testCombatState,objPlayer.attack,100,100);
+draw_sprite(testCombatState,objPlayer.attackmode,100,100);
 
 </string>
           </argument>
