@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>target="";
+click_id = 0;
 </string>
           </argument>
         </arguments>
@@ -54,6 +55,7 @@ if (coll_obj != noone) //if colliding with any obj
 {
 var str_obj_name = object_get_name(coll_obj.object_index); //gets the object name that is colliding at mouse_x, mouse_y position
 }
+
 clicked=true;
 if mouse_check_button_pressed(mb_left)
 {
@@ -62,10 +64,35 @@ if mouse_check_button_pressed(mb_left)
     target= str_obj_name;
     }
 }
+
+draw_set_halign(fa_left);
+draw_set_color(c_black);
 draw_text(0,0,string(target));
+draw_text(0,20,string(click_id));
 
-    
-
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>click_id = 0;
 </string>
           </argument>
         </arguments>

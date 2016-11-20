@@ -47,6 +47,7 @@
     <object>objects\objController</object>
     <object>objects\objTestGrass</object>
     <object>objects\obj_testEnvironment</object>
+    <object>objects\NotTargetableBall</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

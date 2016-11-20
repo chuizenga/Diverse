@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>mouseX=self.x;
 mouseY=self.y;
+
+targetable = true;
+click_id = 0;
 </string>
           </argument>
         </arguments>
@@ -91,6 +94,13 @@ if !position_meeting(mouse_x, mouse_y, all)
     instance_create(mouse_x,mouse_y,objMouseMove);
 }
 
+/* This should get the object id of whatever we click on as long as it is targetable*/
+var click_id = instance_position(mouse_x, mouse_y, all);
+if (click_id.targetable = true){
+    objController.click_id = click_id;
+    }
+    
+    
 </string>
           </argument>
         </arguments>
@@ -116,7 +126,15 @@ if !position_meeting(mouse_x, mouse_y, all)
             <string>draw_sprite(sprite_index,image_index,x,y);
 
 var strName = object_get_name(object_index)
-draw_text(self.x,self.y,strName);
+
+draw_set_halign(fa_center);
+if (objController.click_id = self){
+    draw_set_color(c_white);
+    }
+else if (objController.click_id != self) {
+    draw_set_color(c_black);
+    }
+draw_text(self.x,self.y-32,strName);
 
 </string>
           </argument>
