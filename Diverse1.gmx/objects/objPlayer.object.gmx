@@ -100,9 +100,9 @@ else
 
 if (coll_obj != noone) //if colliding with any obj
 {
-var targetable = coll_obj.targetable; //gets the object name that is colliding at mouse_x, mouse_y position
+var other_targetable = coll_obj.targetable; //gets the object name that is colliding at mouse_x, mouse_y position
 }
-if (!position_meeting(mouse_x, mouse_y, all)) || (targetable == false)
+if (!position_meeting(mouse_x, mouse_y, all)) || (other_targetable == false)
 {
     mouseX=mouse_x; //Store location temporarily
     mouseY=mouse_y;
@@ -114,7 +114,7 @@ if (!position_meeting(mouse_x, mouse_y, all)) || (targetable == false)
     attack = false;
     targeting=false;
 }
-else if (targetable==true)
+else if (other_targetable==true)
 {
     if (targeting == true)
     {
