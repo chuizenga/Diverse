@@ -28,8 +28,13 @@
             <string>mouseX=self.x;
 mouseY=self.y;
 
+attack = false;
 targetable = true;
+
+targeting=false;
+
 click_id = 0;
+c_click_id = 0;
 </string>
           </argument>
         </arguments>
@@ -55,10 +60,20 @@ click_id = 0;
             <string>image_speed=0;
 depth=-y;
 
-
-mouseDistance = point_distance(x,y,mouseX,mouseY);
-move_towards_point(mouseX,mouseY, min(4, mouseDistance));
-
+if (attack == false)
+{
+    mouseDistance = point_distance(x,y,mouseX,mouseY);
+    move_towards_point(mouseX,mouseY, min(4, mouseDistance));
+}
+else if(attack == true) &amp;&amp; (objController.click_id != 0)
+{
+    mouseDistance = point_distance(x,y,objController.target_x,objController.target_y);
+    move_towards_point(objController.target_x,objController.target_y, min(4, mouseDistance));
+}
+else
+{
+    move_towards_point(x,y,0);
+}
 </string>
           </argument>
         </arguments>
@@ -81,9 +96,13 @@ move_towards_point(mouseX,mouseY, min(4, mouseDistance));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>clicked=true;
+            <string>var coll_obj = collision_circle(mouse_x,mouse_y,32,all,0,1); //detect collision at mouse_x and mouse_y position
 
-if !position_meeting(mouse_x, mouse_y, all) 
+if (coll_obj != noone) //if colliding with any obj
+{
+var targetable = coll_obj.targetable; //gets the object name that is colliding at mouse_x, mouse_y position
+}
+if (!position_meeting(mouse_x, mouse_y, all)) || (targetable == false)
 {
     mouseX=mouse_x; //Store location temporarily
     mouseY=mouse_y;
@@ -92,14 +111,31 @@ if !position_meeting(mouse_x, mouse_y, all)
      instance_destroy();
     }
     instance_create(mouse_x,mouse_y,objMouseMove);
+    attack = false;
+    targeting=false;
 }
+else if (targetable==true)
+{
+    if (targeting == true)
+    {
+        if(objController.click_id == instance_position(mouse_x, mouse_y, all))
+        {
+            attack = true;
+        }
+        with (objMouseMove)
+        {
+         instance_destroy();
+        }
+    }
+}
+    
 
 /* This should get the object id of whatever we click on as long as it is targetable*/
 var click_id = instance_position(mouse_x, mouse_y, all);
 if (click_id.targetable = true){
     objController.click_id = click_id;
+    targeting=true;
     }
-    
     
 </string>
           </argument>
