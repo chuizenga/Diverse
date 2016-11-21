@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>targetable = false;
+name = "Not Targetable";
 </string>
           </argument>
         </arguments>
@@ -50,10 +51,10 @@
             <kind>1</kind>
             <string>draw_sprite(sprite_index,image_index,x,y);
 
-var strName = object_get_name(object_index)
+//var strName = object_get_name(object_index)
 draw_set_halign(fa_center);
 draw_set_color(c_black);
-draw_text(self.x,self.y-32,strName);
+draw_text(self.x,self.y-32,name);
 </string>
           </argument>
         </arguments>

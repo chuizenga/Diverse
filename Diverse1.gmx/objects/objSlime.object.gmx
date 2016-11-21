@@ -29,6 +29,9 @@
 targetable = true;
 
 name = "Slime";
+level = 1;
+hp = 10; //current health
+m_hp = 10; //max health
 </string>
           </argument>
         </arguments>

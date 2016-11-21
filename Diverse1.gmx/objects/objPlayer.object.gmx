@@ -44,6 +44,12 @@ sprint = false;
 
 //Character Sheet
 name = "Ikohn";
+level = 1;
+hp = 10; //Current Health
+m_hp = 10; //Max Health
+
+//Character Sheet (Continued)
+range = 20; //Melee: 32, Range: TBD
 </string>
           </argument>
         </arguments>
@@ -68,7 +74,7 @@ name = "Ikohn";
             <kind>1</kind>
             <string>image_speed=0;
 depth=-y;
-
+// AttackMode / PeaceMode
 if(keyboard_check_pressed(ord('Q')))
 {
     if(attackmode)
@@ -95,14 +101,23 @@ if (attack == false)
 }
 else if(attack == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (targetself=false)
 {
-    mouseDistance = point_distance(x,y,objController.target_x,objController.target_y);
-    move_towards_point(objController.target_x,objController.target_y, min(4, mouseDistance));
-    with (objMouseMove)
+    if(distance_to_object(objController.click_id) &gt; range)
     {
-        instance_destroy();
+        mouseDistance = point_distance(x,y,objController.target_x,objController.target_y);
+        move_towards_point(objController.target_x,objController.target_y, min(4, mouseDistance));
+        with (objMouseMove)
+        {
+            instance_destroy();
+        }
+        mouseX = x;
+        mouseY = y;
     }
-    mouseX = x;
-    mouseY = y;
+    if(distance_to_object(objController.click_id) &lt; range)
+    {
+        move_towards_point(x,y,0);
+        mouseX = x;
+        mouseY = y;
+    }
 }
 else
 {
@@ -145,10 +160,7 @@ if (click_id != noone)
         objController.click_id = click_id;
     }
 }
-
-
 coll_obj = instance_position(mouse_x, mouse_y, all); //detect collision at mouse_x and mouse_y position
-
 if (coll_obj != noone) //if colliding with any obj
 {
     if(coll_obj != self)

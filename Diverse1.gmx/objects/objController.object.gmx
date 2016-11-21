@@ -55,6 +55,8 @@ target_y=0;
 {
     target_x = click_id.x;
     target_y = click_id.y;
+    levelDif = click_id.level - objPlayer.level;
+    levelDif = clamp(levelDif, -3, 3);
 }
 </string>
           </argument>
@@ -78,28 +80,22 @@ target_y=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var coll_obj = collision_circle(mouse_x,mouse_y,32,all,0,1); //detect collision at mouse_x and mouse_y position
-
-if (coll_obj != noone) //if colliding with any obj
-{
-var str_obj_name = object_get_name(coll_obj.object_index); //gets the object name that is colliding at mouse_x, mouse_y position
-}
-
-clicked=true;
-if mouse_check_button_pressed(mb_left)
-{
-    if !position_meeting(mouse_x, mouse_y, objMouseMove) 
-    {
-    target= str_obj_name;
-    }
-}
-
-draw_set_halign(fa_left);
+            <string>draw_set_halign(fa_left);
 draw_set_color(c_black);
 draw_text(0,0,string(target));
 draw_text(0,20,string(click_id));
 
 draw_sprite(testCombatState,objPlayer.attackmode,100,100);
+if(click_id != 0)
+{
+    draw_sprite(spr_targetFrame,0,300,3);
+    draw_sprite_ext(spr_targetHealth,0,300,3,(click_id.hp/click_id.m_hp),1,0,c_white,1);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_set_color(c_white);
+    draw_text(450,18,click_id.name);
+    draw_sprite(spr_targetDif,levelDif+3,300,36);
+}
 
 </string>
           </argument>
