@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>image_speed=.33;
 targetable = true;
+enemy = true;
+dead = false;
 
 name = "Slime";
 level = 1;
@@ -55,6 +57,10 @@ m_hp = 10; //max health
           <argument>
             <kind>1</kind>
             <string>depth=-y;
+if(hp &lt;= 0)
+{
+    dead = true;
+}
 </string>
           </argument>
         </arguments>
@@ -79,16 +85,30 @@ m_hp = 10; //max health
             <kind>1</kind>
             <string>draw_sprite(sprite_index,image_index,x,y);
 
-//var strName = object_get_name(object_index)
+//var strName = object_get_name(object_index)\
 draw_set_halign(fa_center);
-if (objController.click_id = self){
-    draw_set_color(c_white);
-    }
-else if (objController.click_id != self) {
-    col = make_color_rgb(255,128,0);
-    draw_set_color(col);
-    }
-draw_text(self.x,self.y-32,name);
+draw_set_valign(fa_middle);
+if (dead == false)
+{
+    if (objController.click_id = self){
+        draw_set_color(c_white);
+        }
+    else if (objController.click_id != self) {
+        col = make_color_rgb(255,128,0);
+        draw_set_color(col);
+        }
+    draw_text(self.x,self.y-32,name);
+}
+else
+{
+    if (objController.click_id = self){
+        draw_set_color(c_gray);
+        }
+    else if (objController.click_id != self) {
+        draw_set_color(c_gray);
+        }
+    draw_text(self.x,self.y-32,name +"'s dead body");
+}
 </string>
           </argument>
         </arguments>

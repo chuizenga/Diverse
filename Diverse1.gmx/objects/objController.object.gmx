@@ -92,8 +92,16 @@ if(click_id != 0)
     draw_sprite_ext(spr_targetHealth,0,300,3,(click_id.hp/click_id.m_hp),1,0,c_white,1);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
-    draw_set_color(c_white);
-    draw_text(450,18,click_id.name);
+    if(click_id.dead = false)
+    {
+        draw_set_color(c_white);
+        draw_text(450,18,click_id.name);
+    }
+    else
+    {
+        draw_set_color(c_gray);
+        draw_text(450,18,click_id.name+"'s dead body");
+    }
     draw_sprite(spr_targetDif,levelDif+3,300,36);
 }
 

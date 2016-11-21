@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>targetable = true;
+enemy = false;
 name = "Test Object";
 level = 10;
 hp = 1; //Current Health
@@ -53,6 +54,7 @@ m_hp = 1; //Max Health
           <argument>
             <kind>1</kind>
             <string>depth=-y;
+dead=false;
 </string>
           </argument>
         </arguments>

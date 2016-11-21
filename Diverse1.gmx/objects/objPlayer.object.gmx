@@ -29,13 +29,17 @@
 mouseX=self.x;
 mouseY=self.y;
 //Declare Attack-related variables
-attack = false;
+following = false;
+attacking = false;
 targetable = true;
 targeting=false;
 targetself=false;
 other_targetable=false;
 click_id = 0;
 c_click_id = 0; // Current click id
+enemy = false;
+swingtimer = 0;
+dead=false;
 
 //Declare Control Variables
 attackmode = false //Peace mode: false - Attack mode: true
@@ -50,6 +54,7 @@ m_hp = 10; //Max Health
 
 //Character Sheet (Continued)
 range = 20; //Melee: 32, Range: TBD
+attackspeed = 1;
 </string>
           </argument>
         </arguments>
@@ -80,26 +85,29 @@ if(keyboard_check_pressed(ord('Q')))
     if(attackmode)
     {
         attackmode = false;
-        attack = false;
+        following = false;
     }
     else
     {
-        attackmode = true;
         if(objController.click_id != 0)
         {
-            attack = true;
+            attackmode = true;
+            if(objController.click_id.enemy == true)
+            {
+                following = true;
+            }
         }
     }
 }
 
 
 //MOVEMENT
-if (attack == false)
+if (following == false)
 {
     mouseDistance = point_distance(x,y,mouseX,mouseY);
     move_towards_point(mouseX,mouseY, min(4, mouseDistance));
 }
-else if(attack == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (targetself=false)
+else if(following == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (targetself=false)
 {
     if(distance_to_object(objController.click_id) &gt; range)
     {
@@ -111,9 +119,18 @@ else if(attack == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (tar
         }
         mouseX = x;
         mouseY = y;
+        attacking = false;
     }
     if(distance_to_object(objController.click_id) &lt; range)
     {
+        if(objController.click_id.enemy==true) &amp;&amp; (objController.click_id.dead == false)
+        {
+            attacking = true;
+        }
+        else
+        {
+            attacking = false;
+        }
         move_towards_point(x,y,0);
         mouseX = x;
         mouseY = y;
@@ -127,6 +144,23 @@ else
     with (objMouseMove)
     {
         instance_destroy();
+    }
+}
+if (attacking == true) &amp;&amp; (objController.click_id.enemy == true)
+{
+    swingtimer += attackspeed;
+    if (swingtimer &gt;= 50)
+    {
+        objController.click_id.hp--;
+        swingtimer = 0;
+    }
+    if(objController.click_id.dead = true)
+    {
+        following = false;
+        attackmode = false;
+        objController.click_id = 0;
+        click_id = 0;
+        attacking = false;
     }
 }
 </string>
@@ -172,7 +206,7 @@ if (coll_obj != noone) //if colliding with any obj
     {
         other_targetable = true;
         targetself = true;
-        attack = false;
+        following = false;
     }
 }
 if (!position_meeting(mouse_x, mouse_y, all)) || (other_targetable == false)
@@ -184,20 +218,23 @@ if (!position_meeting(mouse_x, mouse_y, all)) || (other_targetable == false)
      instance_destroy();
     }
     instance_create(mouse_x,mouse_y,objMouseMove);
-    attack = false;
+    following = false;
 }
 else if (other_targetable==true)
 {  
-    if (c_click_id == click_id) &amp;&amp; (targeting == true) &amp;&amp; (c_click_id != 0)
+    if (c_click_id == objController.click_id) &amp;&amp; (targeting == true) &amp;&amp; (c_click_id != 0)
     {
-        if(click_id != self)
+        if(objController.click_id != self)
         {
-            attackmode = true;
-            attack = true;
+            if(objController.click_id.enemy = true)
+            {
+                attackmode = true;
+            }
+            following = true;
         }
         else
         {
-            attack = false;
+            following = false;
         }
     }
     else
@@ -206,8 +243,11 @@ else if (other_targetable==true)
         c_click_id = instance_position(mouse_x, mouse_y, all);
     }
     if (attackmode == true)
-    {
-        attack = true;
+    {            
+        if(objController.click_id.enemy = true)
+        {
+            following = true;
+        }
     }
 }
 </string>
