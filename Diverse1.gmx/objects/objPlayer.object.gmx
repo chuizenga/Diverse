@@ -28,6 +28,9 @@
             <string>//Declare mouse variables
 mouseX=self.x;
 mouseY=self.y;
+cur_x = x;
+cur_y = y;
+
 //Declare Attack-related variables
 following = false;
 attacking = false;
@@ -55,6 +58,9 @@ m_hp = 10; //Max Health
 //Character Sheet (Continued)
 range = 20; //Melee: 32, Range: TBD
 attackspeed = 1;
+
+//Spawn facing random direction
+direction = random(360);
 </string>
           </argument>
         </arguments>
@@ -77,8 +83,9 @@ attackspeed = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0;
+            <string>//image_speed=0;
 depth=-y;
+
 // AttackMode / PeaceMode
 if(keyboard_check_pressed(ord('Q')))
 {
@@ -105,7 +112,7 @@ if(keyboard_check_pressed(ord('Q')))
 if (following == false)
 {
     mouseDistance = point_distance(x,y,mouseX,mouseY);
-    move_towards_point(mouseX,mouseY, min(4, mouseDistance));
+    move_towards_point(mouseX,mouseY, min(4, mouseDistance)); //does this not set a speed value?
 }
 else if(following == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (targetself=false)
 {
@@ -170,6 +177,13 @@ if (attacking == true) &amp;&amp; (objController.click_id.enemy == true) &amp;&a
         attacking = false;
     }
 }
+
+//if the player is moving this should hopefully move to the next frame of animation.
+//if (cur_x != x || cur_y != y){
+//    image_index ++;
+//    cur_x = x;
+//    cur_y = y;
+//    }
 </string>
           </argument>
         </arguments>
@@ -279,7 +293,19 @@ else if (other_targetable==true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index,image_index,x,y);
+            <string>//animation of character direction
+if (direction &lt; 45 || direction &gt; 315 ){
+    draw_sprite(testMoveRight,image_index,x,y);
+    }
+if (direction &gt;= 45 &amp;&amp; direction &lt; 135){
+    draw_sprite(testMoveUp, image_index,x,y);
+    }
+if (direction &gt;= 125 &amp;&amp; direction &lt; 225){
+    draw_sprite(testMoveLeft, image_index,x,y);
+    }
+if (direction &gt;= 225 &amp;&amp; direction &lt;315){
+    draw_sprite(testMoveDown, image_index,x,y);
+    }
 
 //strName = object_get_name(object_index)
 

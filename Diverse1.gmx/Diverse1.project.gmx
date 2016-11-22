@@ -37,6 +37,7 @@
     <sprite>sprites\spr_targetFrame</sprite>
     <sprite>sprites\spr_targetHealth</sprite>
     <sprite>sprites\spr_targetDif</sprite>
+    <sprite>sprites\sprite23</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\testISO</background>
