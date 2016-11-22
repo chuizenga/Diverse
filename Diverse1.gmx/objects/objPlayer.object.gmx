@@ -123,9 +123,12 @@ else if(following == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (
     }
     if(distance_to_object(objController.click_id) &lt; range)
     {
-        if(objController.click_id.enemy==true) &amp;&amp; (objController.click_id.dead == false)
+        if(objController.click_id.enemy==true)
         {
-            attacking = true;
+            if(objController.click_id.dead == false)
+            {
+                attacking = true;
+            }
         }
         else
         {
@@ -146,7 +149,7 @@ else
         instance_destroy();
     }
 }
-if (attacking == true) &amp;&amp; (objController.click_id.enemy == true)
+if (attacking == true) &amp;&amp; (objController.click_id.enemy == true) &amp;&amp; (distance_to_object(objController.click_id) &lt; range)
 {
     swingtimer += attackspeed;
     if (swingtimer &gt;= 50)
@@ -226,7 +229,7 @@ else if (other_targetable==true)
     {
         if(objController.click_id != self)
         {
-            if(objController.click_id.enemy = true)
+            if(objController.click_id.enemy = true) &amp;&amp; (objController.click_id.dead == false)
             {
                 attackmode = true;
             }
