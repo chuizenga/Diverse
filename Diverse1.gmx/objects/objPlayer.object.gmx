@@ -129,6 +129,10 @@ else if(following == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (
             {
                 attacking = true;
             }
+            else
+            {
+                following = false;
+            }
         }
         else
         {
@@ -149,7 +153,7 @@ else
         instance_destroy();
     }
 }
-if (attacking == true) &amp;&amp; (objController.click_id.enemy == true) &amp;&amp; (distance_to_object(objController.click_id) &lt; range)
+if (attacking == true) &amp;&amp; (objController.click_id.enemy == true) &amp;&amp; (distance_to_object(objController.click_id) &lt; range) &amp;&amp; (attackmode == true)
 {
     swingtimer += attackspeed;
     if (swingtimer &gt;= 50)
