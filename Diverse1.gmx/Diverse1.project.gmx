@@ -43,6 +43,12 @@
     <background>background\testISO</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_name.gml</script>
+  </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_1</font>
+  </fonts>
   <objects name="objects">
     <object>objects\TestObj</object>
     <object>objects\objPlayer</object>

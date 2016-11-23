@@ -66,6 +66,30 @@ if(hp &lt;= 0)
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>col = make_color_rgb(255,128,0);
+scr_name(col);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -84,31 +108,6 @@ if(hp &lt;= 0)
           <argument>
             <kind>1</kind>
             <string>draw_sprite(sprite_index,image_index,x,y);
-
-//var strName = object_get_name(object_index)\
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-if (dead == false)
-{
-    if (objController.click_id = self){
-        draw_set_color(c_white);
-        }
-    else if (objController.click_id != self) {
-        col = make_color_rgb(255,128,0);
-        draw_set_color(col);
-        }
-    draw_text(self.x,self.y-32,name);
-}
-else
-{
-    if (objController.click_id = self){
-        draw_set_color(c_gray);
-        }
-    else if (objController.click_id != self) {
-        draw_set_color(c_gray);
-        }
-    draw_text(self.x,self.y-32,name +"'s dead body");
-}
 </string>
           </argument>
         </arguments>
