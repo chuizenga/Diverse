@@ -87,21 +87,21 @@ direction = random(360);
 depth=-y;
 
 // AttackMode / PeaceMode
-if(keyboard_check_pressed(ord('Q')))
+if(keyboard_check_pressed(ord('Q'))) //Press Q
 {
-    if(attackmode)
+    if(attackmode)          //If you're already in attack mode
     {
-        attackmode = false;
+        attackmode = false; //Turn off attack mode
         following = false;
     }
     else
     {
-        if(objController.click_id != 0)
+        if(objController.click_id != 0) //if you're targeting something
         {
             attackmode = true;
             if(objController.click_id.enemy == true)
             {
-                following = true;
+                following = true; //Only starts following if enemy is selected
             }
         }
     }
@@ -109,14 +109,14 @@ if(keyboard_check_pressed(ord('Q')))
 
 
 //MOVEMENT
-if (following == false)
+if (following == false) //Click on ground
 {
     mouseDistance = point_distance(x,y,mouseX,mouseY);
-    move_towards_point(mouseX,mouseY, min(4, mouseDistance)); //does this not set a speed value?
+    move_towards_point(mouseX,mouseY, min(4, mouseDistance)); //min(speed, mouseDistance)
 }
-else if(following == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (targetself=false)
+else if(following == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (targetself=false) //Click on something thats not you
 {
-    if(distance_to_object(objController.click_id) &gt; range)
+    if(distance_to_object(objController.click_id) &gt; range) //Check to see if you're not in range
     {
         mouseDistance = point_distance(x,y,objController.target_x,objController.target_y);
         move_towards_point(objController.target_x,objController.target_y, min(4, mouseDistance));
@@ -128,29 +128,30 @@ else if(following == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (
         mouseY = y;
         attacking = false;
     }
-    if(distance_to_object(objController.click_id) &lt; range)
+    if(distance_to_object(objController.click_id) &lt; range) //This is when you're in range
+                                                            //NOTE: When we add long range auto-attacks (Bows/Guns) this will have to be edited.
     {
-        if(objController.click_id.enemy==true)
+        if(objController.click_id.enemy==true) //Is it an enemy?
         {
-            if(objController.click_id.dead == false)
+            if(objController.click_id.dead == false) //Yes, Is it alive?
             {
-                attacking = true;
+                attacking = true; //Yes: attack
             }
             else
             {
-                following = false;
+                following = false; //No: don't attack, stop following it.
             }
         }
         else
         {
-            attacking = false;
+            attacking = false; //No, its not an enemy. Don't attack.
         }
-        move_towards_point(x,y,0);
+        move_towards_point(x,y,0);//Stops moving when you are in range.
         mouseX = x;
         mouseY = y;
     }
 }
-else
+else //Not moving (Targeting self, walked up to dead body, etc)
 {
     move_towards_point(x,y,0);
     mouseX = x;
@@ -160,6 +161,8 @@ else
         instance_destroy();
     }
 }
+//ATTACK CODE (Temporary)
+//NOTE: Will probably change when we add more stats and stuff
 if (attacking == true) &amp;&amp; (objController.click_id.enemy == true) &amp;&amp; (distance_to_object(objController.click_id) &lt; range) &amp;&amp; (attackmode == true)
 {
     swingtimer += attackspeed;
@@ -215,55 +218,56 @@ if (click_id != noone)
         objController.click_id = click_id;
     }
 }
+
 coll_obj = instance_position(mouse_x, mouse_y, all); //detect collision at mouse_x and mouse_y position
 if (coll_obj != noone) //if colliding with any obj
 {
-    if(coll_obj != self)
+    if(coll_obj != self) //Clicked not your self
     {
         other_targetable = coll_obj.targetable; //gets the object name that is colliding at mouse_x, mouse_y position
         targetself = false;
     }
-    else
+    else //Clicked self
     {
         other_targetable = true;
         targetself = true;
         following = false;
     }
 }
-if (!position_meeting(mouse_x, mouse_y, all)) || (other_targetable == false)
+if (!position_meeting(mouse_x, mouse_y, all)) || (other_targetable == false) //Clicked on ground
 {
     mouseX=mouse_x; //Store location temporarily
     mouseY=mouse_y;
-    with (objMouseMove) //Destroy objMouseMove
+    with (objMouseMove) //Destroy old mouse move
     {
      instance_destroy();
     }
-    instance_create(mouse_x,mouse_y,objMouseMove);
+    instance_create(mouse_x,mouse_y,objMouseMove); //Create new
     following = false;
 }
-else if (other_targetable==true)
+else if (other_targetable==true) //Clicked on someting you can target
 {  
-    if (c_click_id == objController.click_id) &amp;&amp; (targeting == true) &amp;&amp; (c_click_id != 0)
+    if (c_click_id == objController.click_id) &amp;&amp; (targeting == true) &amp;&amp; (c_click_id != 0) //If you clicked on it a second time
     {
-        if(objController.click_id != self)
+        if(objController.click_id != self) //Double clicked, making sure its not yourself!
         {
-            if(objController.click_id.enemy = true) &amp;&amp; (objController.click_id.dead == false)
+            if(objController.click_id.enemy = true) &amp;&amp; (objController.click_id.dead == false) //Is it an enemy? Is it alive?
             {
-                attackmode = true;
+                attackmode = true; //YES. YES. Kill!
             }
-            following = true;
+            following = true; //YES. No. Walk up to it.
         }
         else
         {
-            following = false;
+            following = false; //Double clicked self.
         }
     }
-    else
+    else //Clicked for first time
     {
         targeting=true;
         c_click_id = instance_position(mouse_x, mouse_y, all);
     }
-    if (attackmode == true)
+    if (attackmode == true) //Already ready to attack, just bypass the double clicking and begin attack
     {            
         if(objController.click_id.enemy = true)
         {
@@ -293,7 +297,7 @@ else if (other_targetable==true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>col = make_color_rgb(0,192,192);
+            <string>col = make_color_rgb(0,192,192); // Teal Color
 scr_name(col);
 </string>
           </argument>
