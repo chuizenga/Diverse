@@ -31,6 +31,10 @@ name = "Test Object";
 level = 10;
 hp = 1; //Current Health
 m_hp = 1; //Max Health
+line = " ";
+Text_id = 0;
+speaking = false;
+instance_create(x,y,npcText) 
 </string>
           </argument>
         </arguments>
@@ -55,6 +59,23 @@ m_hp = 1; //Max Health
             <kind>1</kind>
             <string>depth=-y;
 dead=false;
+if Text_id = 0 {
+    speaking = false;
+    line = "";
+}
+if Text_id = 1 {
+    line = "hello travler"
+}
+if Text_id = 2 {
+    line = "welcome to ...?"
+}
+if Text_id = 3 {
+    line = "actually nevermind"
+}
+if distance_to_object(objPlayer) &gt;64{
+    Text_id = 0;
+    speaking = false;
+}
 </string>
           </argument>
         </arguments>
@@ -83,6 +104,39 @@ dead=false;
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///begin and end talking
+if distance_to_object(objPlayer) &lt;32{
+    Text_id += 1;
+    speaking = true;
+    
+    if Text_id &gt; 3{
+    count = 0;
+    speaking = false;
+    }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -101,6 +155,7 @@ dead=false;
           <argument>
             <kind>1</kind>
             <string>scr_name(c_orange);
+
 </string>
           </argument>
         </arguments>
@@ -123,7 +178,8 @@ dead=false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index,image_index,x,y);
+            <string>draw_self();
+
 </string>
           </argument>
         </arguments>
