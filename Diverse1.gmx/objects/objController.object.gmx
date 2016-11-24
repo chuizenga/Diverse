@@ -63,7 +63,7 @@ target_y=0;
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -80,7 +80,13 @@ target_y=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_left);
+            <string>posx = (x - view_xview[0])*(display_get_gui_width() / view_wview); //The X position, relative to the view, and scaled to the current window size.
+posy = (y - view_yview[0])*(display_get_gui_height() / view_hview); //The Y position, relative to the view, and scaled to the current window size.
+//To correct for an increase in size, make the name display higher above the characters heads.
+w_correct = (display_get_gui_width() / view_wview);
+h_correct = (display_get_gui_height() / view_hview);
+
+draw_set_halign(fa_left);
 draw_set_color(c_black);
 draw_text(0,0,string(target));
 draw_text(0,20,string(click_id));
@@ -88,21 +94,21 @@ draw_text(0,20,string(click_id));
 draw_sprite(testCombatState,objPlayer.attackmode,100,100);
 if(click_id != 0)
 {
-    draw_sprite(spr_targetFrame,0,300,3);
-    draw_sprite_ext(spr_targetHealth,0,300,3,(click_id.hp/click_id.m_hp),1,0,c_white,1);
+    draw_sprite(spr_targetFrame,0,view_wview*w_correct/2,view_yview+3*h_correct);
+    draw_sprite_ext(spr_targetHealth,0,view_wview*w_correct/2,view_yview+3*h_correct,(click_id.hp/click_id.m_hp),1,0,c_white,1);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     if(click_id.dead = false)
     {
         draw_set_color(c_white);
-        draw_text(450,18,click_id.name);
+        draw_text(view_wview*w_correct/2,view_yview+18*h_correct,click_id.name);
     }
     else
     {
         draw_set_color(c_gray);
-        draw_text(450,18,click_id.name+"'s dead body");
+        draw_text(view_wview*w_correct/2,view_yview+18*h_correct,click_id.name+"'s dead body");
     }
-    draw_sprite(spr_targetDif,levelDif+3,300,36);
+    draw_sprite(spr_targetDif,levelDif+3,view_wview/2*w_correct,view_yview+36*h_correct);
 }
 
 </string>
