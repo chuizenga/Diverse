@@ -98,7 +98,7 @@ if distance_to_object(objPlayer) &gt;64{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y = y-1;
+            <string>//y = y-1;
 </string>
           </argument>
         </arguments>

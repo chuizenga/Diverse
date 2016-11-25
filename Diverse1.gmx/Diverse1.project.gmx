@@ -45,6 +45,8 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_name.gml</script>
+    <script>scripts\scr_display.gml</script>
+    <script>scripts\display_write_specs.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_1</font>
@@ -59,8 +61,10 @@
     <object>objects\objTestGrass</object>
     <object>objects\obj_testEnvironment</object>
     <object>objects\NotTargetableBall</object>
+    <object>objects\obj_display_manager</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\_display_init</room>
     <room>rooms\room0</room>
   </rooms>
   <help>

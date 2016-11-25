@@ -85,7 +85,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// defines witch npc is talking
+            <string>/// defines which npc is talking
 if instance_nearest(x,x,TestObj).speaking = true {
     draw_text(x,y -64,instance_nearest(x,y,TestObj).line);
 }
