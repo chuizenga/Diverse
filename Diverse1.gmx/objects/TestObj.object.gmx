@@ -35,6 +35,8 @@ line = " ";
 Text_id = 0;
 speaking = false;
 instance_create(x,y,npcText) 
+
+isUI = false;
 </string>
           </argument>
         </arguments>
@@ -178,7 +180,7 @@ if distance_to_object(objPlayer) &lt;32{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>scr_character();
 
 </string>
           </argument>

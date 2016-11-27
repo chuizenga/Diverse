@@ -31,6 +31,8 @@ mouseY=self.y;
 cur_x = x;
 cur_y = y;
 
+
+isUI = false;
 //Declare Attack-related variables
 following = false;
 attacking = false;
@@ -272,7 +274,7 @@ view_yview=clamp(view_yview,0,room_height-view_hview);
 click_id = instance_position(mouse_x, mouse_y, all);
 if (click_id != noone)
 {
-    if (click_id.targetable = true)
+    if (click_id.targetable == true) &amp;&amp; (click_id.isUI == false)
     {
         objController.click_id = click_id;
     }
@@ -293,7 +295,7 @@ if (coll_obj != noone) //if colliding with any obj
         following = false;
     }
 }
-if (!position_meeting(mouse_x, mouse_y, all)) || (other_targetable == false) //Clicked on ground
+if (!position_meeting(mouse_x, mouse_y, all)) || (other_targetable == false) &amp;&amp; (click_id.isUI == false) //Clicked on ground
 {
     mouseX=mouse_x; //Store location temporarily
     mouseY=mouse_y;
@@ -380,7 +382,8 @@ scr_name(col);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//animation of character direction
+            <string>scr_character();
+//animation of character direction
 if (direction &lt; 45 || direction &gt; 315 ){
     draw_sprite(testMoveRight,image_index,x,y);
     }

@@ -29,6 +29,7 @@
 targetable = true;
 enemy = true;
 dead = false;
+isUI = false;
 
 name = "Slime";
 level = 1;
@@ -107,7 +108,7 @@ scr_name(col);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index,image_index,x,y);
+            <string>scr_character();
 </string>
           </argument>
         </arguments>

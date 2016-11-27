@@ -38,6 +38,18 @@
     <sprite>sprites\spr_targetHealth</sprite>
     <sprite>sprites\spr_targetDif</sprite>
     <sprite>sprites\sprite23</sprite>
+    <sprites name="testWindow">
+      <sprite>sprites\spr_windowSides</sprite>
+      <sprite>sprites\spr_windowTL</sprite>
+      <sprite>sprites\spr_windowT</sprite>
+      <sprite>sprites\spr_windowTR</sprite>
+      <sprite>sprites\spr_windowR</sprite>
+      <sprite>sprites\spr_windowBR</sprite>
+      <sprite>sprites\spr_windowB</sprite>
+      <sprite>sprites\spr_windowBL</sprite>
+      <sprite>sprites\spr_windowL</sprite>
+      <sprite>sprites\spr_regionPixel</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\testISO</background>
@@ -47,6 +59,7 @@
     <script>scripts\scr_name.gml</script>
     <script>scripts\scr_display.gml</script>
     <script>scripts\display_write_specs.gml</script>
+    <script>scripts\scr_character.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_1</font>
@@ -62,10 +75,11 @@
     <object>objects\obj_testEnvironment</object>
     <object>objects\NotTargetableBall</object>
     <object>objects\obj_display_manager</object>
+    <object>objects\obj_testWindow</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\_display_init</room>
-    <room>rooms\room0</room>
+    <room>rooms\rm_test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
