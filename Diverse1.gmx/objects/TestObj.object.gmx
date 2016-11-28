@@ -181,6 +181,7 @@ if distance_to_object(objPlayer) &lt;32{
           <argument>
             <kind>1</kind>
             <string>scr_character();
+draw_sprite(sprite_index,image_index,x,y);
 
 </string>
           </argument>

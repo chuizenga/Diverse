@@ -50,7 +50,8 @@ isUI = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>scr_character();
+draw_sprite(sprite_index,image_index,x,y);
 
 //var strName = object_get_name(object_index)
 draw_set_halign(fa_center);

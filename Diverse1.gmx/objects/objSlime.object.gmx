@@ -108,7 +108,8 @@ scr_name(col);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_character();
+            <string>draw_sprite(sprite_index,image_index,x,y);
+scr_character();
 </string>
           </argument>
         </arguments>
