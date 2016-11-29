@@ -21,6 +21,8 @@
       <sprite>sprites\testMoveRight</sprite>
       <sprite>sprites\testMoveLeft</sprite>
       <sprite>sprites\testCursor</sprite>
+      <sprite>sprites\stickmanRunRight</sprite>
+      <sprite>sprites\stickmanRunLeft</sprite>
     </sprites>
     <sprites name="testEnemies">
       <sprite>sprites\testSlime</sprite>
