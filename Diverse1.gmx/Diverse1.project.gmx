@@ -41,16 +41,31 @@
     <sprite>sprites\spr_targetDif</sprite>
     <sprite>sprites\sprite23</sprite>
     <sprites name="testWindow">
-      <sprite>sprites\spr_windowSides</sprite>
-      <sprite>sprites\spr_windowTL</sprite>
-      <sprite>sprites\spr_windowT</sprite>
-      <sprite>sprites\spr_windowTR</sprite>
-      <sprite>sprites\spr_windowR</sprite>
-      <sprite>sprites\spr_windowBR</sprite>
-      <sprite>sprites\spr_windowB</sprite>
-      <sprite>sprites\spr_windowBL</sprite>
-      <sprite>sprites\spr_windowL</sprite>
+      <sprite>sprites\sprite36</sprite>
       <sprite>sprites\spr_regionPixel</sprite>
+      <sprites name="testWindowBorder">
+        <sprite>sprites\spr_windowSides</sprite>
+        <sprite>sprites\spr_windowTL</sprite>
+        <sprite>sprites\spr_windowT</sprite>
+        <sprite>sprites\spr_windowTR</sprite>
+        <sprite>sprites\spr_windowR</sprite>
+        <sprite>sprites\spr_windowBR</sprite>
+        <sprite>sprites\spr_windowB</sprite>
+        <sprite>sprites\spr_windowBL</sprite>
+        <sprite>sprites\spr_windowL</sprite>
+      </sprites>
+      <sprites name="testWindowButton">
+        <sprite>sprites\spr_buttonBack</sprite>
+        <sprite>sprites\spr_buttonSides</sprite>
+        <sprite>sprites\spr_buttonTL</sprite>
+        <sprite>sprites\spr_buttonT</sprite>
+        <sprite>sprites\spr_buttonTR</sprite>
+        <sprite>sprites\spr_buttonR</sprite>
+        <sprite>sprites\spr_buttonBR</sprite>
+        <sprite>sprites\spr_buttonB</sprite>
+        <sprite>sprites\spr_buttonBL</sprite>
+        <sprite>sprites\spr_buttonL</sprite>
+      </sprites>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -62,22 +77,34 @@
     <script>scripts\scr_display.gml</script>
     <script>scripts\display_write_specs.gml</script>
     <script>scripts\scr_character.gml</script>
+    <script>scripts\scr_gui_map.gml</script>
+    <script>scripts\scr_draw_menu.gml</script>
+    <script>scripts\scr_draw_ui_element.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_1</font>
   </fonts>
   <objects name="objects">
-    <object>objects\TestObj</object>
-    <object>objects\objPlayer</object>
-    <object>objects\objMouseMove</object>
-    <object>objects\objSlime</object>
-    <object>objects\npcText</object>
-    <object>objects\objController</object>
-    <object>objects\objTestGrass</object>
-    <object>objects\obj_testEnvironment</object>
-    <object>objects\NotTargetableBall</object>
-    <object>objects\obj_display_manager</object>
-    <object>objects\obj_testWindow</object>
+    <objects name="PC">
+      <object>objects\objPlayer</object>
+      <object>objects\objMouseMove</object>
+    </objects>
+    <objects name="NPC">
+      <object>objects\TestObj</object>
+      <object>objects\objSlime</object>
+      <object>objects\NotTargetableBall</object>
+      <object>objects\npcText</object>
+    </objects>
+    <objects name="UI">
+      <object>objects\objController</object>
+      <object>objects\obj_display_manager</object>
+      <object>objects\obj_testWindow</object>
+      <object>objects\obj_testButton</object>
+    </objects>
+    <objects name="Environment">
+      <object>objects\obj_testEnvironment</object>
+      <object>objects\objTestGrass</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\_display_init</room>

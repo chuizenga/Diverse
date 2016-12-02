@@ -7,6 +7,7 @@ w_correct = (display_get_gui_width() / view_wview);
 h_correct = (display_get_gui_height() / view_hview);
 
 maxlength = view_wview[0];
+spriteH = sprite_height;
 
 if(dead==false) //ex: Slime
 {
@@ -31,9 +32,9 @@ boxwidth = text_width;
 boxheight = text_height;
 //Math to calculate box coordinates
 x1 = posx-boxwidth/2;
-y1 = posy-boxheight/2-sprite_height*h_correct;
+y1 = posy-boxheight/2-spriteH*h_correct;
 x2 = posx+boxwidth/2;
-y2 = posy+boxheight/2-sprite_height*h_correct;
+y2 = posy+boxheight/2-spriteH*h_correct;
 //Create Box
 draw_set_font(font);
 draw_set_alpha(.5);
@@ -56,7 +57,7 @@ if (dead == false)
     else if (objController.click_id != self) {
         draw_set_color(argument0);
         }
-    draw_text(posx,posy-sprite_height*h_correct,text);
+    draw_text(posx,posy-spriteH*h_correct,text);
 }
 else
 {
@@ -66,6 +67,6 @@ else
     else if (objController.click_id != self) {
         draw_set_color(c_gray);
         }
-    draw_text(posx,posy-sprite_height*h_correct,text);
+    draw_text(posx,posy-spriteH*h_correct,text);
 }
 
