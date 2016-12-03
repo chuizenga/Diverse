@@ -3,7 +3,7 @@
   <spriteName>spr_regionPixel</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100000</depth>
+  <depth>-100001</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,8 +28,16 @@
             <string>targetable=false;
 isUI=true;
 
-width = 200;
-height = 300;
+width = 150;
+height = 20;
+h_offset = 0;
+v_offset = 0;
+scr_gui_map(h_offset,v_offset);
+state = 0;
+hasEntered = false;
+hasClicked = false;
+
+text = "Options";
 </string>
           </argument>
         </arguments>
@@ -52,10 +60,34 @@ height = 300;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_gui_map();
-if !instance_exists(obj_testButton)
+            <string>scr_gui_map(h_offset,v_offset);
+
+if(position_meeting(mouse_x,mouse_y,self))
 {
-    instance_create(x,y,obj_testButton);
+    if(hasEntered) &amp;&amp; mouse_check_button(mb_left)
+    {
+        state = 2;
+        hasClicked = true;
+    }
+    else
+    {
+    state = 1;
+    hasEntered = true;
+    }
+}
+if(!position_meeting(mouse_x,mouse_y,self))
+{
+    if(hasEntered)
+    {
+        state = 0;
+        hasEntered = false;
+    }
+    if(hasClicked)
+    {
+        state = 0;
+        hasClicked = 0;
+    }
+    
 }
 </string>
           </argument>
@@ -79,64 +111,18 @@ if !instance_exists(obj_testButton)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw Menu
-
-
-//Draw Background
-draw_set_alpha(.5);
-draw_set_color(c_black);
-draw_rectangle(
-    x1,
-    y1,
-    x2,
-    y2,
-    0
-    );
-//DRAW BORDER
-//draw_sprite_stretched(sprite_index,subimage,x,y,width,height);
-draw_set_alpha(1);
-//Top
-draw_sprite_stretched(
-    spr_windowT,
-    0,
-    x1+8,
-    y1,
-    width-16,
-    16
-    );
-//Bottom
-draw_sprite_stretched(
-    spr_windowB,
-    0,
-    x1+8,
-    y1+height-15, //Bottom and Right sides 1 pixel too long
-    width-16,
-    16
-    );
-//Left
-draw_sprite_stretched(
-    spr_windowL,
-    0,
-    x1,
-    y1+8,
-    16,
-    height - 16
-    );
-//Right
-draw_sprite_stretched(
-    spr_windowR,
-    0,
-    x1+width-15, //Bottom and Right sides 1 pixel too long
-    y1+8,
-    16,
-    height - 16
-    );
-//DRAW CORNERS
-draw_sprite(spr_windowTL,0,x1,y1);
-draw_sprite(spr_windowTR,0,x1+width-15,y1); //Bottom and Right sides 1 pixel too long
-draw_sprite(spr_windowBR,0,x1+width-15,y1+height-15); //Bottom and Right sides 1 pixel too long
-draw_sprite(spr_windowBL,0,x1,y1+height-15); //Bottom and Right sides 1 pixel too long
-
+            <string>scr_draw_ui_button(
+    spr_buttonTL,
+    spr_buttonT,
+    spr_buttonTR,
+    spr_buttonR,
+    spr_buttonBR,
+    spr_buttonB,
+    spr_buttonBL,
+    spr_buttonL,
+    spr_buttonBack,
+    state,
+    text);
 </string>
           </argument>
         </arguments>
@@ -163,32 +149,6 @@ draw_sprite(spr_windowBL,0,x1,y1+height-15); //Bottom and Right sides 1 pixel to
 draw_set_color(c_white);
 //draw_rectangle(posx1,posy1,posx2,posy2,0)
 draw_self();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="27">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with(self)
-{
-    instance_destroy();
-}
 </string>
           </argument>
         </arguments>

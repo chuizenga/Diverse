@@ -3,7 +3,7 @@
   <spriteName>spr_regionPixel</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100001</depth>
+  <depth>-100000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,11 +27,61 @@
             <kind>1</kind>
             <string>targetable=false;
 isUI=true;
+padding = 16;
+width = 200;
+height = padding;
+scr_gui_map(0,0);
+instance_create(x,y,obj_ui_returnButton);
+instance_create(x,y,obj_ui_optionsButton);
+instance_create(x,y,obj_ui_interfaceButton);
+height = 
+    padding//Top
+    + obj_ui_optionsButton.height
+    + padding
+    + obj_ui_interfaceButton.height
+    + (padding * 2)
+    + obj_ui_returnButton.height
+    + padding; //Bottom
+obj_ui_optionsButton.v_offset = - height/2 + 2*padding;
+obj_ui_interfaceButton.v_offset = - height/2 + 4*padding;
+obj_ui_returnButton.v_offset = height/2 - 2*padding;
 
-width = 150;
-height = 20;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(obj_ui_returnButton)
+{
+    instance_destroy();
+}
 
-scr_gui_map();
+with(obj_ui_optionsButton)
+{
+    instance_destroy();
+}
+
+with(obj_ui_interfaceButton)
+{
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -54,7 +104,7 @@ scr_gui_map();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_gui_map();
+            <string>scr_gui_map(0,0);
 </string>
           </argument>
         </arguments>
@@ -77,16 +127,9 @@ scr_gui_map();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_draw_ui_element(
-    spr_buttonTL,
-    spr_buttonT,
-    spr_buttonTR,
-    spr_buttonR,
-    spr_buttonBR,
-    spr_buttonB,
-    spr_buttonBL,
-    spr_buttonL,
-    spr_buttonBack);
+            <string>///Draw Menu
+scr_draw_ui_menu();
+
 </string>
           </argument>
         </arguments>
@@ -113,6 +156,32 @@ scr_gui_map();
 draw_set_color(c_white);
 //draw_rectangle(posx1,posy1,posx2,posy2,0)
 draw_self();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(self)
+{
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>

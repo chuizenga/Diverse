@@ -86,7 +86,7 @@ new_direction = direction;
             <kind>1</kind>
             <string>///View Zoom
 view_zoom = 1;
-view_max_zoom = 10;
+view_max_zoom = 5;
 </string>
           </argument>
         </arguments>

@@ -77,9 +77,11 @@
     <script>scripts\scr_display.gml</script>
     <script>scripts\display_write_specs.gml</script>
     <script>scripts\scr_character.gml</script>
+    <script>scripts\scr_gui_map_center.gml</script>
     <script>scripts\scr_gui_map.gml</script>
-    <script>scripts\scr_draw_menu.gml</script>
+    <script>scripts\scr_draw_ui_menu.gml</script>
     <script>scripts\scr_draw_ui_element.gml</script>
+    <script>scripts\scr_draw_ui_button.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_1</font>
@@ -98,8 +100,10 @@
     <objects name="UI">
       <object>objects\objController</object>
       <object>objects\obj_display_manager</object>
-      <object>objects\obj_testWindow</object>
-      <object>objects\obj_testButton</object>
+      <object>objects\obj_ui_gameMenu</object>
+      <object>objects\obj_ui_returnButton</object>
+      <object>objects\obj_ui_optionsButton</object>
+      <object>objects\obj_ui_interfaceButton</object>
     </objects>
     <objects name="Environment">
       <object>objects\obj_testEnvironment</object>
