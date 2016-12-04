@@ -37,7 +37,7 @@ state = 0;
 hasEntered = false;
 hasClicked = false;
 
-text = "Interface";
+text = "Graphics";
 </string>
           </argument>
         </arguments>
@@ -70,7 +70,7 @@ if(position_meeting(mouse_x,mouse_y,self))
     }
     else if(hasEntered) &amp;&amp; (hasClicked) &amp;&amp; !mouse_check_button(mb_left)
     {
-        //FUNCTION HERE
+        //FUNCTION
     }
     else
     {
@@ -122,7 +122,7 @@ if(!position_meeting(mouse_x,mouse_y,self))
     spr_buttonB,
     spr_buttonBL,
     spr_buttonL,
-    spr_buttonBack,
+    spr_regionPixel,
     state,
     text);
 </string>

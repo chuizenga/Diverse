@@ -3,7 +3,7 @@
   <spriteName>spr_regionPixel</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100001</depth>
+  <depth>-100000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,17 +27,68 @@
             <kind>1</kind>
             <string>targetable=false;
 isUI=true;
+padding = 16;
+width = 500;
+height = 200;
+scr_gui_map(0,0);
 
-width = 150;
-height = 20;
-h_offset = 0;
-v_offset = 0;
-scr_gui_map(h_offset,v_offset);
-state = 0;
-hasEntered = false;
-hasClicked = false;
+instance_create(x,y,obj_ui_graphicsLabel);
+instance_create(x,y,obj_ui_displayModeButton);
+obj_ui_graphicsLabel.v_offset = -height/2 + 2*padding;
+obj_ui_graphicsLabel.h_offset = -width/2 + padding + obj_ui_graphicsLabel.width/2;
+obj_ui_displayModeButton.v_offset = -height/2 + 2*padding;
+obj_ui_displayModeButton.h_offset = -width/2 + padding + obj_ui_graphicsLabel.width/2 + padding + obj_ui_displayModeButton.width;
+/*
+instance_create(x,y,obj_ui_returnButton);
+instance_create(x,y,obj_ui_optionsButton);
+instance_create(x,y,obj_ui_interfaceButton);
+instance_create(x,y,obj_ui_quitButton);
+height = 
+    padding//Top
+    + obj_ui_optionsButton.height
+    + padding
+    + obj_ui_interfaceButton.height
+    + padding
+    + obj_ui_quitButton.height
+    + (padding * 2) //Between Bottom Button, and 2nd from bottom
+    + obj_ui_returnButton.height
+    + padding; //Bottom
+obj_ui_optionsButton.v_offset = - height/2 + 2*padding;
+obj_ui_interfaceButton.v_offset = - height/2 + 4*padding;
+obj_ui_quitButton.v_offset = - height/2 + 6*padding;
+obj_ui_returnButton.v_offset = height/2 - 2*padding;
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(obj_ui_graphicsLabel)
+{
+    instance_destroy();
+}
 
-text = "Interface";
+with(obj_ui_displayModeButton)
+{
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -60,37 +111,7 @@ text = "Interface";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_gui_map(h_offset,v_offset);
-if(position_meeting(mouse_x,mouse_y,self))
-{
-    if(hasEntered) &amp;&amp; mouse_check_button(mb_left)
-    {
-        state = 2;
-        hasClicked = true;
-    }
-    else if(hasEntered) &amp;&amp; (hasClicked) &amp;&amp; !mouse_check_button(mb_left)
-    {
-        //FUNCTION HERE
-    }
-    else
-    {
-    state = 1;
-    hasEntered = true;
-    }
-}
-if(!position_meeting(mouse_x,mouse_y,self))
-{
-    if(hasEntered)
-    {
-        state = 0;
-        hasEntered = false;
-    }
-    if(hasClicked)
-    {
-        state = 0;
-        hasClicked = 0;
-    } 
-}
+            <string>scr_gui_map(0,0);
 </string>
           </argument>
         </arguments>
@@ -113,18 +134,9 @@ if(!position_meeting(mouse_x,mouse_y,self))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_draw_ui_button(
-    spr_buttonTL,
-    spr_buttonT,
-    spr_buttonTR,
-    spr_buttonR,
-    spr_buttonBR,
-    spr_buttonB,
-    spr_buttonBL,
-    spr_buttonL,
-    spr_buttonBack,
-    state,
-    text);
+            <string>///Draw Menu
+scr_draw_ui_menu();
+
 </string>
           </argument>
         </arguments>
@@ -151,6 +163,32 @@ if(!position_meeting(mouse_x,mouse_y,self))
 draw_set_color(c_white);
 //draw_rectangle(posx1,posy1,posx2,posy2,0)
 draw_self();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(self)
+{
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>

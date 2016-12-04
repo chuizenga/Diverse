@@ -66,7 +66,10 @@
         <sprite>sprites\spr_buttonBL</sprite>
         <sprite>sprites\spr_buttonL</sprite>
       </sprites>
+      <sprite>sprites\sprite48</sprite>
+      <sprite>sprites\sprite49</sprite>
     </sprites>
+    <sprite>sprites\spr_cursor</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\testISO</background>
@@ -82,6 +85,7 @@
     <script>scripts\scr_draw_ui_menu.gml</script>
     <script>scripts\scr_draw_ui_element.gml</script>
     <script>scripts\scr_draw_ui_button.gml</script>
+    <script>scripts\scr_ui_button_step.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_1</font>
@@ -100,10 +104,18 @@
     <objects name="UI">
       <object>objects\objController</object>
       <object>objects\obj_display_manager</object>
-      <object>objects\obj_ui_gameMenu</object>
-      <object>objects\obj_ui_returnButton</object>
-      <object>objects\obj_ui_optionsButton</object>
-      <object>objects\obj_ui_interfaceButton</object>
+      <objects name="GameMenu">
+        <object>objects\obj_ui_gameMenu</object>
+        <object>objects\obj_ui_returnButton</object>
+        <object>objects\obj_ui_optionsButton</object>
+        <object>objects\obj_ui_interfaceButton</object>
+        <object>objects\obj_ui_quitButton</object>
+      </objects>
+      <objects name="OptionsMenu">
+        <object>objects\obj_ui_optionsMenu</object>
+        <object>objects\obj_ui_graphicsLabel</object>
+        <object>objects\obj_ui_displayModeButton</object>
+      </objects>
     </objects>
     <objects name="Environment">
       <object>objects\obj_testEnvironment</object>

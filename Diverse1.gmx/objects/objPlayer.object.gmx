@@ -52,7 +52,7 @@ run = true; //walk: false - run: true
 sprint = false;
 
 //Character Sheet
-name = "Ikohn";
+name = "MyPlayerNameIs27LettersLong";
 level = 1;
 hp = 10; //Current Health
 m_hp = 10; //Max Health
@@ -64,29 +64,6 @@ attackspeed = 1;
 //Spawn facing random direction
 direction = random(360);
 new_direction = direction;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///View Zoom
-view_zoom = 1;
-view_max_zoom = 5;
 </string>
           </argument>
         </arguments>
@@ -138,14 +115,14 @@ if(keyboard_check_pressed(ord('Q'))) //Press Q
 if (following == false) //Click on ground
 {
     mouseDistance = point_distance(x,y,mouseX,mouseY);
-    move_towards_point(mouseX,mouseY, min(4, mouseDistance)); //min(speed, mouseDistance)
+    move_towards_point(mouseX,mouseY, min(2, mouseDistance)); //min(speed, mouseDistance)
 }
 else if(following == true) &amp;&amp; (objController.click_id != 0) &amp;&amp; (targetself=false) //Click on something thats not you
 {
     if(distance_to_object(objController.click_id) &gt; range) //Check to see if you're not in range
     {
         mouseDistance = point_distance(x,y,objController.target_x,objController.target_y);
-        move_towards_point(objController.target_x,objController.target_y, min(4, mouseDistance));
+        move_towards_point(objController.target_x,objController.target_y, min(2, mouseDistance));
         with (objMouseMove)
         {
             instance_destroy();
@@ -213,42 +190,6 @@ if (attacking == true) &amp;&amp; (objController.click_id.enemy == true) &amp;&a
 //    cur_x = x;
 //    cur_y = y;
 //    }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///View Following
-//Zoom View
-var zoom_speed = .1;
-view_zoom+=keyboard_check(vk_up)*zoom_speed;
-view_zoom-=keyboard_check(vk_down)*zoom_speed;
-
-view_zoom=clamp(view_zoom,1,view_max_zoom);
-
-view_wview=obj_display_manager.ideal_width/view_zoom;
-view_hview=obj_display_manager.ideal_height/view_zoom;
-//Center on player
-view_xview=x-view_wview/2-10;
-view_yview=y-view_hview/2-10;
-//Clamp to room
-view_xview= clamp(view_xview,0,room_width-view_wview);
-view_yview=clamp(view_yview,0,room_height-view_hview);
 </string>
           </argument>
         </arguments>
@@ -385,7 +326,7 @@ scr_name(col);
             <kind>1</kind>
             <string>scr_character();
 
-image_speed = .25;
+image_speed = .125;
 //animation of character direction
 if (new_direction &lt; 45 || new_direction &gt; 315 ){
     draw_sprite(stickmanRunRight,image_index,x,y);

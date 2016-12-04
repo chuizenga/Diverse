@@ -61,13 +61,20 @@ text = "Options";
           <argument>
             <kind>1</kind>
             <string>scr_gui_map(h_offset,v_offset);
-
 if(position_meeting(mouse_x,mouse_y,self))
 {
     if(hasEntered) &amp;&amp; mouse_check_button(mb_left)
     {
         state = 2;
         hasClicked = true;
+    }
+    else if(hasEntered) &amp;&amp; (hasClicked) &amp;&amp; !mouse_check_button(mb_left)
+    {
+        instance_create(x,y,obj_ui_optionsMenu);
+        with(obj_ui_gameMenu)
+        {
+            instance_destroy();
+        }
     }
     else
     {
@@ -86,8 +93,7 @@ if(!position_meeting(mouse_x,mouse_y,self))
     {
         state = 0;
         hasClicked = 0;
-    }
-    
+    } 
 }
 </string>
           </argument>

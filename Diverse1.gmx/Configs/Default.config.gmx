@@ -415,10 +415,10 @@
     <option_scaleprogress>true</option_scaleprogress>
     <option_sci_UseSCI>-1</option_sci_UseSCI>
     <option_sci_serverLocation>https://github.com/chrishuizenga/Diverse.git/</option_sci_serverLocation>
-    <option_screenkey>True</option_screenkey>
+    <option_screenkey>False</option_screenkey>
     <option_screenshotkey>true</option_screenshotkey>
     <option_shortcircuit>True</option_shortcircuit>
-    <option_showcursor>True</option_showcursor>
+    <option_showcursor>False</option_showcursor>
     <option_showprogress>1</option_showprogress>
     <option_sizeable>False</option_sizeable>
     <option_stayontop>false</option_stayontop>

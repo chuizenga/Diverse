@@ -34,16 +34,20 @@ scr_gui_map(0,0);
 instance_create(x,y,obj_ui_returnButton);
 instance_create(x,y,obj_ui_optionsButton);
 instance_create(x,y,obj_ui_interfaceButton);
+instance_create(x,y,obj_ui_quitButton);
 height = 
     padding//Top
     + obj_ui_optionsButton.height
     + padding
     + obj_ui_interfaceButton.height
-    + (padding * 2)
+    + padding
+    + obj_ui_quitButton.height
+    + (padding * 2) //Between Bottom Button, and 2nd from bottom
     + obj_ui_returnButton.height
     + padding; //Bottom
 obj_ui_optionsButton.v_offset = - height/2 + 2*padding;
 obj_ui_interfaceButton.v_offset = - height/2 + 4*padding;
+obj_ui_quitButton.v_offset = - height/2 + 6*padding;
 obj_ui_returnButton.v_offset = height/2 - 2*padding;
 
 </string>
@@ -79,6 +83,11 @@ with(obj_ui_optionsButton)
 }
 
 with(obj_ui_interfaceButton)
+{
+    instance_destroy();
+}
+
+with(obj_ui_quitButton)
 {
     instance_destroy();
 }

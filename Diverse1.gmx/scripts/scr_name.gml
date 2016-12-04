@@ -1,17 +1,17 @@
 //scr_name(col)
-//call in Draw GUI
-posx = (x - view_xview[0])*(display_get_gui_width() / view_wview); //The X position, relative to the view, and scaled to the current window size.
-posy = (y - view_yview[0])*(display_get_gui_height() / view_hview); //The Y position, relative to the view, and scaled to the current window size.
 //To correct for an increase in size, make the name display higher above the characters heads.
 w_correct = (display_get_gui_width() / view_wview);
 h_correct = (display_get_gui_height() / view_hview);
+//call in Draw GUI
+posx = (x - view_xview[0])*(display_get_gui_width() / view_wview); //The X position, relative to the view, and scaled to the current window size.
+posy = (y - view_yview[0])*(display_get_gui_height() / view_hview); //The Y position, relative to the view, and scaled to the current window size.
 
-maxlength = view_wview[0];
+maxlength = view_wview[0]*2;
 spriteH = sprite_height;
 
 if(dead==false) //ex: Slime
 {
-    text = name;
+    text = name; //name;
 }
 else //ex: Slime's dead body
 {
@@ -32,9 +32,9 @@ boxwidth = text_width;
 boxheight = text_height;
 //Math to calculate box coordinates
 x1 = posx-boxwidth/2;
-y1 = posy-boxheight/2-spriteH*h_correct;
+y1 = posy-boxheight/2-spriteH*h_correct+boxheight*(h_correct-1)/2;
 x2 = posx+boxwidth/2;
-y2 = posy+boxheight/2-spriteH*h_correct;
+y2 = posy+boxheight*h_correct/2-spriteH*h_correct;
 //Create Box
 draw_set_font(font);
 draw_set_alpha(.5);
@@ -57,7 +57,7 @@ if (dead == false)
     else if (objController.click_id != self) {
         draw_set_color(argument0);
         }
-    draw_text(posx,posy-spriteH*h_correct,text);
+    draw_text(posx,posy-spriteH*h_correct+boxheight*(h_correct-1)/2,text);
 }
 else
 {
@@ -67,6 +67,5 @@ else
     else if (objController.click_id != self) {
         draw_set_color(c_gray);
         }
-    draw_text(posx,posy-spriteH*h_correct,text);
+    draw_text(posx,posy-spriteH*h_correct+boxheight*(h_correct-1)/2,text);
 }
-

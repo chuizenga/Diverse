@@ -36,8 +36,14 @@ scr_gui_map(h_offset,v_offset);
 state = 0;
 hasEntered = false;
 hasClicked = false;
-
-text = "Interface";
+if(!window_get_fullscreen())
+{
+    text = "Windowed";
+}
+if(window_get_fullscreen())
+{
+    text = "Fullscreen";
+}
 </string>
           </argument>
         </arguments>
@@ -68,9 +74,22 @@ if(position_meeting(mouse_x,mouse_y,self))
         state = 2;
         hasClicked = true;
     }
-    else if(hasEntered) &amp;&amp; (hasClicked) &amp;&amp; !mouse_check_button(mb_left)
+    else if(hasEntered) &amp;&amp; (hasClicked) &amp;&amp; !mouse_check_button_pressed(mb_left)
     {
-        //FUNCTION HERE
+        if window_get_fullscreen()
+        {
+            window_set_fullscreen(false);
+        }
+        else
+        {
+            window_set_fullscreen(true);
+            surface_resize(application_surface,display_get_width(),display_get_height());
+            //display_set_gui_size(ideal_width,ideal_height);
+            window_set_size(display_get_width(),display_get_height());
+            room_set_view(1,0,true,0,0,display_get_width(),display_get_height(),0,0,display_get_width(),display_get_height(),0,0,0,0,-1);
+            view_wview=display_get_width();
+            view_hview=display_get_height();
+        }
     }
     else
     {
