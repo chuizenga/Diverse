@@ -115,6 +115,16 @@
         <object>objects\obj_ui_optionsMenu</object>
         <object>objects\obj_ui_graphicsLabel</object>
         <object>objects\obj_ui_displayModeButton</object>
+        <objects name="DisplayMode">
+          <object>objects\obj_ui_fullscreenButton</object>
+          <object>objects\obj_ui_windowedButton</object>
+        </objects>
+        <object>objects\obj_ui_resolutionButton</object>
+        <object>objects\obj_ui_scaleButton</object>
+        <object>objects\obj_ui_zoomButton</object>
+        <object>objects\obj_ui_applyButton</object>
+        <object>objects\obj_ui_okayButton</object>
+        <object>objects\obj_ui_cancelButton</object>
       </objects>
     </objects>
     <objects name="Environment">

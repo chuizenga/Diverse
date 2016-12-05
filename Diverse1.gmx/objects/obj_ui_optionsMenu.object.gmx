@@ -34,10 +34,32 @@ scr_gui_map(0,0);
 
 instance_create(x,y,obj_ui_graphicsLabel);
 instance_create(x,y,obj_ui_displayModeButton);
+instance_create(x,y,obj_ui_resolutionButton);
+instance_create(x,y,obj_ui_scaleButton);
+instance_create(x,y,obj_ui_zoomButton);
+instance_create(x,y,obj_ui_applyButton);
+instance_create(x,y,obj_ui_okayButton);
+instance_create(x,y,obj_ui_cancelButton);
+
 obj_ui_graphicsLabel.v_offset = -height/2 + 2*padding;
 obj_ui_graphicsLabel.h_offset = -width/2 + padding + obj_ui_graphicsLabel.width/2;
 obj_ui_displayModeButton.v_offset = -height/2 + 2*padding;
-obj_ui_displayModeButton.h_offset = -width/2 + padding + obj_ui_graphicsLabel.width/2 + padding + obj_ui_displayModeButton.width;
+obj_ui_displayModeButton.h_offset = -width/2 + padding + obj_ui_graphicsLabel.width/2 + padding + obj_ui_displayModeButton.width*2;
+obj_ui_resolutionButton.v_offset = -height/2 + 4*padding;
+obj_ui_resolutionButton.h_offset = -width/2 + padding + obj_ui_graphicsLabel.width/2 + padding + obj_ui_displayModeButton.width*2;
+obj_ui_scaleButton.v_offset = -height/2 + 6*padding;
+obj_ui_scaleButton.h_offset = -width/2 + padding + obj_ui_graphicsLabel.width/2 + padding + obj_ui_displayModeButton.width*2;
+obj_ui_zoomButton.v_offset = -height/2 + 8*padding;
+obj_ui_zoomButton.h_offset = -width/2 + padding + obj_ui_graphicsLabel.width/2 + padding + obj_ui_displayModeButton.width*2;
+
+obj_ui_okayButton.v_offset = height/2 - padding;
+obj_ui_okayButton.h_offset = width/2 - padding*2 - obj_ui_cancelButton.width/2-obj_ui_okayButton.width;
+
+obj_ui_applyButton.v_offset = height/2 - padding*1.5 - obj_ui_cancelButton.height;
+obj_ui_applyButton.h_offset = width/2 - padding - obj_ui_cancelButton.width/2;
+
+obj_ui_cancelButton.v_offset = height/2 - padding;
+obj_ui_cancelButton.h_offset = width/2 - padding - obj_ui_cancelButton.width/2;
 /*
 instance_create(x,y,obj_ui_returnButton);
 instance_create(x,y,obj_ui_optionsButton);
@@ -89,6 +111,36 @@ with(obj_ui_displayModeButton)
 {
     instance_destroy();
 }
+
+with(obj_ui_resolutionButton)
+{
+    instance_destroy();
+}
+
+with(obj_ui_scaleButton)
+{
+    instance_destroy();
+}
+
+with(obj_ui_zoomButton)
+{
+    instance_destroy();
+}
+
+with(obj_ui_applyButton)
+{
+    instance_destroy();
+}
+
+with(obj_ui_okayButton)
+{
+    instance_destroy();
+}
+
+with(obj_ui_cancelButton)
+{
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -136,6 +188,30 @@ with(obj_ui_displayModeButton)
             <kind>1</kind>
             <string>///Draw Menu
 scr_draw_ui_menu();
+//display_get_gui_height()/2 -height/2 + 2*padding
+//display_get_gui_width()/2 -width/2 + padding + obj_ui_graphicsLabel.width/2 + padding + obj_ui_displayModeButton.width;
+draw_set_font(fnt_1);
+draw_set_color(c_white);
+draw_set_alpha(1);
+draw_set_valign(fa_middle);
+draw_set_halign(fa_right);
+draw_text(
+    display_get_gui_width()/2 -width/2 + padding*3 + obj_ui_graphicsLabel.width/2 + padding + obj_ui_graphicsLabel.width,
+    display_get_gui_height()/2 -height/2 + 2*padding,
+    "Display Mode:");
+draw_text(
+    display_get_gui_width()/2 -width/2 + padding*3 + obj_ui_graphicsLabel.width/2 + padding + obj_ui_graphicsLabel.width,
+    display_get_gui_height()/2 -height/2 + 4*padding,
+    "Resolution:");
+draw_text(
+    display_get_gui_width()/2 -width/2 + padding*3 + obj_ui_graphicsLabel.width/2 + padding + obj_ui_graphicsLabel.width,
+    display_get_gui_height()/2 -height/2 + 6*padding,
+    "Scale:");
+draw_text(
+    display_get_gui_width()/2 -width/2 + padding*3 + obj_ui_graphicsLabel.width/2 + padding + obj_ui_graphicsLabel.width,
+    display_get_gui_height()/2 -height/2 + 8*padding,
+    "Zoom:");
+
 
 </string>
           </argument>

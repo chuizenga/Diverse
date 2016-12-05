@@ -36,16 +36,8 @@ scr_gui_map(h_offset,v_offset);
 state = 0;
 hasEntered = false;
 hasClicked = false;
-if(!window_get_fullscreen())
-{
-    text = "Windowed";
-    isFullscreen = false;
-}
-if(window_get_fullscreen())
-{
-    text = "Fullscreen";
-    isFullscreen = true;
-}
+text = "Cancel";
+
 </string>
           </argument>
         </arguments>
@@ -69,17 +61,6 @@ if(window_get_fullscreen())
           <argument>
             <kind>1</kind>
             <string>scr_gui_map(h_offset,v_offset);
-
-if(isFullscreen){
-    text = "Fullscreen";
-}
-else
-{
-    text = "Windowed";
-}
-
-
-
 if(position_meeting(mouse_x,mouse_y,self))
 {
     if(hasEntered) &amp;&amp; mouse_check_button(mb_left)
@@ -89,40 +70,9 @@ if(position_meeting(mouse_x,mouse_y,self))
     }
     else if(hasEntered) &amp;&amp; (hasClicked) &amp;&amp; !mouse_check_button_pressed(mb_left)
     {
-        if(instance_exists(obj_ui_fullscreenButton))
+        with(obj_ui_optionsMenu)
         {
-            with(obj_ui_fullscreenButton)
-            {
-                instance_destroy();
-            }
-        }
-        else
-        {
-            var inst ;
-            inst = instance_create(x,y,obj_ui_fullscreenButton);
-            with(inst)
-            {
-                v_offset = obj_ui_displayModeButton.v_offset + height;
-                h_offset = obj_ui_displayModeButton.h_offset;
-            }
-        }
-        if(instance_exists(obj_ui_windowedButton))
-        {
-            with(obj_ui_windowedButton)
-            {
-                instance_destroy();
-            }
-        }
-
-        else
-        {
-            var inst ;
-            inst = instance_create(x,y,obj_ui_windowedButton);
-            with(inst)
-            {
-                v_offset = obj_ui_displayModeButton.v_offset + height*2;
-                h_offset = obj_ui_displayModeButton.h_offset;
-            }
+            instance_destroy();
         }
         hasClicked=false;
     }

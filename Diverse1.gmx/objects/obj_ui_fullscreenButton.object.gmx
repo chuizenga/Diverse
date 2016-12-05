@@ -2,8 +2,8 @@
 <object>
   <spriteName>spr_regionPixel</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
-  <depth>-100001</depth>
+  <visible>0</visible>
+  <depth>-100002</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -36,16 +36,33 @@ scr_gui_map(h_offset,v_offset);
 state = 0;
 hasEntered = false;
 hasClicked = false;
-if(!window_get_fullscreen())
-{
-    text = "Windowed";
-    isFullscreen = false;
-}
-if(window_get_fullscreen())
-{
-    text = "Fullscreen";
-    isFullscreen = true;
-}
+text = "Fullscreen";
+
+alarm[0]=1;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>visible=true;
 </string>
           </argument>
         </arguments>
@@ -70,16 +87,6 @@ if(window_get_fullscreen())
             <kind>1</kind>
             <string>scr_gui_map(h_offset,v_offset);
 
-if(isFullscreen){
-    text = "Fullscreen";
-}
-else
-{
-    text = "Windowed";
-}
-
-
-
 if(position_meeting(mouse_x,mouse_y,self))
 {
     if(hasEntered) &amp;&amp; mouse_check_button(mb_left)
@@ -89,40 +96,14 @@ if(position_meeting(mouse_x,mouse_y,self))
     }
     else if(hasEntered) &amp;&amp; (hasClicked) &amp;&amp; !mouse_check_button_pressed(mb_left)
     {
-        if(instance_exists(obj_ui_fullscreenButton))
+        obj_ui_displayModeButton.isFullscreen = true;
+        with(obj_ui_fullscreenButton)
         {
-            with(obj_ui_fullscreenButton)
-            {
-                instance_destroy();
-            }
+            instance_destroy();
         }
-        else
+        with(obj_ui_windowedButton)
         {
-            var inst ;
-            inst = instance_create(x,y,obj_ui_fullscreenButton);
-            with(inst)
-            {
-                v_offset = obj_ui_displayModeButton.v_offset + height;
-                h_offset = obj_ui_displayModeButton.h_offset;
-            }
-        }
-        if(instance_exists(obj_ui_windowedButton))
-        {
-            with(obj_ui_windowedButton)
-            {
-                instance_destroy();
-            }
-        }
-
-        else
-        {
-            var inst ;
-            inst = instance_create(x,y,obj_ui_windowedButton);
-            with(inst)
-            {
-                v_offset = obj_ui_displayModeButton.v_offset + height*2;
-                h_offset = obj_ui_displayModeButton.h_offset;
-            }
+            instance_destroy();
         }
         hasClicked=false;
     }

@@ -71,6 +71,7 @@ if(position_meeting(mouse_x,mouse_y,self))
     else if(hasEntered) &amp;&amp; (hasClicked) &amp;&amp; !mouse_check_button(mb_left)
     {
         //FUNCTION
+        hasClicked=false;
     }
     else
     {

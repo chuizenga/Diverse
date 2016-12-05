@@ -36,16 +36,7 @@ scr_gui_map(h_offset,v_offset);
 state = 0;
 hasEntered = false;
 hasClicked = false;
-if(!window_get_fullscreen())
-{
-    text = "Windowed";
-    isFullscreen = false;
-}
-if(window_get_fullscreen())
-{
-    text = "Fullscreen";
-    isFullscreen = true;
-}
+text = "Okay";
 </string>
           </argument>
         </arguments>
@@ -69,17 +60,6 @@ if(window_get_fullscreen())
           <argument>
             <kind>1</kind>
             <string>scr_gui_map(h_offset,v_offset);
-
-if(isFullscreen){
-    text = "Fullscreen";
-}
-else
-{
-    text = "Windowed";
-}
-
-
-
 if(position_meeting(mouse_x,mouse_y,self))
 {
     if(hasEntered) &amp;&amp; mouse_check_button(mb_left)
@@ -89,41 +69,22 @@ if(position_meeting(mouse_x,mouse_y,self))
     }
     else if(hasEntered) &amp;&amp; (hasClicked) &amp;&amp; !mouse_check_button_pressed(mb_left)
     {
-        if(instance_exists(obj_ui_fullscreenButton))
+        /*
+        if window_get_fullscreen()
         {
-            with(obj_ui_fullscreenButton)
-            {
-                instance_destroy();
-            }
+            window_set_fullscreen(false);
         }
         else
         {
-            var inst ;
-            inst = instance_create(x,y,obj_ui_fullscreenButton);
-            with(inst)
-            {
-                v_offset = obj_ui_displayModeButton.v_offset + height;
-                h_offset = obj_ui_displayModeButton.h_offset;
-            }
+            window_set_fullscreen(true);
+            surface_resize(application_surface,display_get_width(),display_get_height());
+            //display_set_gui_size(ideal_width,ideal_height);
+            window_set_size(display_get_width(),display_get_height());
+            room_set_view(1,0,true,0,0,display_get_width(),display_get_height(),0,0,display_get_width(),display_get_height(),0,0,0,0,-1);
+            view_wview=display_get_width();
+            view_hview=display_get_height();
         }
-        if(instance_exists(obj_ui_windowedButton))
-        {
-            with(obj_ui_windowedButton)
-            {
-                instance_destroy();
-            }
-        }
-
-        else
-        {
-            var inst ;
-            inst = instance_create(x,y,obj_ui_windowedButton);
-            with(inst)
-            {
-                v_offset = obj_ui_displayModeButton.v_offset + height*2;
-                h_offset = obj_ui_displayModeButton.h_offset;
-            }
-        }
+        */
         hasClicked=false;
     }
     else

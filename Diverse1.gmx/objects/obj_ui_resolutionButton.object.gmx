@@ -36,16 +36,7 @@ scr_gui_map(h_offset,v_offset);
 state = 0;
 hasEntered = false;
 hasClicked = false;
-if(!window_get_fullscreen())
-{
-    text = "Windowed";
-    isFullscreen = false;
-}
-if(window_get_fullscreen())
-{
-    text = "Fullscreen";
-    isFullscreen = true;
-}
+text = string(view_wview)+" x "+string(view_hview);
 </string>
           </argument>
         </arguments>
@@ -69,7 +60,7 @@ if(window_get_fullscreen())
           <argument>
             <kind>1</kind>
             <string>scr_gui_map(h_offset,v_offset);
-
+/*
 if(isFullscreen){
     text = "Fullscreen";
 }
@@ -77,6 +68,7 @@ else
 {
     text = "Windowed";
 }
+*/
 
 
 
